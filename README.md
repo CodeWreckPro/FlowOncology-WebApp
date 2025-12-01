@@ -1,6 +1,7 @@
 # FlowOncology Web Application
 
 FlowOncology WebApp is a Next.js application scaffolded with the App Router, React, TypeScript, and Tailwind CSS. It provides a clean foundation for building oncology-focused features and workflows.
+This project is in progress and does not yet encompass the complete architecture of the FlowOncology platform.
 
 ## Overview
 - Built on `Next.js 15` with the App Router (`src/app`)
@@ -28,26 +29,62 @@ FlowOncology WebApp is a Next.js application scaffolded with the App Router, Rea
 ## Project Structure
 ```
 FlowOncology-WebApp/
-├── public/                     # Static assets available at the site root
-│   ├── next.svg
-│   ├── vercel.svg
-│   ├── file.svg
-│   ├── globe.svg
-│   └── window.svg
+src/
+├── app/
+│   ├── layout.tsx                 # Root layout
+│   ├── page.tsx                   # Main entry point (uses FlowOncologyApp)
+│   └── globals.css                # Global styles
 │
-├── src/
-│   └── app/
-│       ├── favicon.ico         # Application favicon
-│       ├── globals.css         # Global styles (imports Tailwind)
-│       ├── layout.tsx          # Root layout and metadata
-│       └── page.tsx            # Home page
+├── components/
+│   ├── layout/
+│   │   ├── Sidebar.tsx           # Sidebar navigation component
+│   │   └── Header.tsx            # Top header with search
+│   │
+│   ├── dashboard/
+│   │   ├── DashboardView.tsx     # Main dashboard container
+│   │   ├── RecentPatients.tsx    # Recent patients list
+│   │   ├── PatientCard.tsx       # Individual patient card
+│   │   └── StudiesGrid.tsx       # New studies section
+│   │
+│   ├── patient/
+│   │   ├── PatientDetailView.tsx      # Patient detail container
+│   │   ├── PatientHeader.tsx          # Patient info header
+│   │   ├── PatientTabs.tsx            # Tab navigation
+│   │   ├── TestHistoryTimeline.tsx    # Test history timeline view
+│   │   ├── TestDetailsView.tsx        # Detailed test view
+│   │   ├── TreatmentHistoryTimeline.tsx  # Treatment timeline
+│   │   └── TreatmentDetailsView.tsx   # Detailed treatment view
+│   │
+│   └── ui/
+│       ├── Button.tsx            # Reusable button component
+│       ├── Card.tsx              # Reusable card component
+│       ├── Badge.tsx             # Status badges
+│       └── Input.tsx             # Form inputs
 │
-├── next.config.ts              # Next.js configuration
-├── postcss.config.mjs          # Tailwind/PostCSS plugin config
-├── tsconfig.json               # TypeScript configuration
-├── package.json                # Dependencies and scripts
-├── package-lock.json           # NPM lockfile
-└── .gitignore                  # Git ignore patterns
+├── types/
+│   ├── index.ts                  # Export all types
+│   ├── patient.ts                # Patient related types
+│   ├── test.ts                   # Test related types
+│   ├── treatment.ts              # Treatment related types
+│   └── study.ts                  # Study related types
+│
+├── data/
+│   ├── mockPatients.ts           # Mock patient data
+│   ├── mockStudies.ts            # Mock studies data
+│   ├── mockTests.ts              # Mock test data
+│   └── mockTreatments.ts         # Mock treatment data
+│
+├── hooks/
+│   ├── usePatientData.ts         # Custom hook for patient operations
+│   ├── useSearch.ts              # Search functionality hook
+│   └── useNavigation.ts          # Navigation state management
+│
+├── lib/
+│   ├── utils.ts                  # Utility functions
+│   └── constants.ts              # App constants
+│
+└── styles/
+    └── tailwind.config.js        # Tailwind configuration
 ```
 
 ## Configuration Notes
